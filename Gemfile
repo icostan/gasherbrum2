@@ -31,6 +31,13 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  # more dev tools
+  gem 'ruby-lint'
+  gem 'solargraph'
+  gem 'reek'
+  gem 'rubocop'
+  gem 'pry'
 end
 
 group :development do
