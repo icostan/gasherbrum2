@@ -12,27 +12,27 @@ module MountainForecast
 
     date = page.search "tr.forecast__table-days td"
     date = date.map{|td| [td['data-column-name'].strip] * td['colspan'].to_i }.flatten
-    puts "Date: #{date.size} - #{date}"
+    # puts "Date: #{date.size} - #{date}"
 
     time = page.search "tr.forecast__table-time td"
     time = time.map{|td| td.text.strip}
-    puts "Time: #{time.size} - #{time}"
+    # puts "Time: #{time.size} - #{time}"
 
     wind = page.search "tr.forecast__table-wind td img"
     wind = wind.map{|td| td['alt']}
-    puts "Wind: #{wind.size} - #{wind}"
+    # puts "Wind: #{wind.size} - #{wind}"
 
     snow = page.search "tr.forecast__table-snow td"
     snow = snow.map{|td| td.text.strip.gsub("-", '')}
-    puts "Snow: #{snow.size} - #{snow}"
+    # puts "Snow: #{snow.size} - #{snow}"
 
     temp = page.search "tr.forecast__table-max-temperature td"
     temp = temp.map{|td| td.text.strip}
-    puts "Temp: #{temp.size} - #{temp}"
+    # puts "Temp: #{temp.size} - #{temp}"
 
     freezing = page.search "tr.forecast__table-freezing-level td"
     freezing = freezing.map{|td| td.text.strip}
-    puts "Level: #{freezing.size} - #{freezing}"
+    # puts "Level: #{freezing.size} - #{freezing}"
 
     date = date.map{|d| {date: d} }
     time = time.map{|t| {time: t} }
