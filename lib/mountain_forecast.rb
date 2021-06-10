@@ -11,11 +11,11 @@ module MountainForecast
     page = agent.get url
 
     date = page.search "tr.forecast__table-days td"
-    date = date.map{|td| [blankify(td['data-column-name']).strip] * td['colspan'].to_i }.flatten
+    date = date.map{|td| [blankify(td['data-column-name'])] * td['colspan'].to_i }.flatten
     # puts "Date: #{date.size} - #{date}"
 
     time = page.search "tr.forecast__table-time td"
-    time = time.map{|td| td.text.strip}
+    time = time.map{|td| blankify td.text }
     # puts "Time: #{time.size} - #{time}"
 
     wind = page.search "tr.forecast__table-wind td img"
@@ -23,15 +23,15 @@ module MountainForecast
     # puts "Wind: #{wind.size} - #{wind}"
 
     snow = page.search "tr.forecast__table-snow td"
-    snow = snow.map{|td| td.text.strip.gsub("-", '')}
+    snow = snow.map{|td| blankify td.text.gsub(/-/, '0') }
     # puts "Snow: #{snow.size} - #{snow}"
 
     temp = page.search "tr.forecast__table-max-temperature td"
-    temp = temp.map{|td| td.text.strip}
+    temp = temp.map{|td| blankify td.text }
     # puts "Temp: #{temp.size} - #{temp}"
 
     freezing = page.search "tr.forecast__table-freezing-level td"
-    freezing = freezing.map{|td| td.text.strip}
+    freezing = freezing.map{|td| blankify td.text }
     # puts "Level: #{freezing.size} - #{freezing}"
 
     date = date.map{|d| {date: d} }
