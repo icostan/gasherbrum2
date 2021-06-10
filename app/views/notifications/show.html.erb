@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @notification.email %>
+</p>
+
+<p>
+  <strong>Format:</strong>
+  <%= @notification.format %>
+</p>
+
+<p>
+  <strong>Send at:</strong>
+  <%= @notification.send_at %>
+</p>
+
+<%= link_to 'Edit', edit_notification_path(@notification) %> |
+<%= link_to 'Back', notifications_path %>

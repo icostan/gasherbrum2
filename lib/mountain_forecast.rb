@@ -11,7 +11,7 @@ module MountainForecast
     page = agent.get url
 
     date = page.search "tr.forecast__table-days td"
-    date = date.map{|td| [td['data-column-name'].strip] * td['colspan'].to_i }.flatten
+    date = date.map{|td| [blankify(td['data-column-name']).strip] * td['colspan'].to_i }.flatten
     # puts "Date: #{date.size} - #{date}"
 
     time = page.search "tr.forecast__table-time td"
@@ -19,7 +19,7 @@ module MountainForecast
     # puts "Time: #{time.size} - #{time}"
 
     wind = page.search "tr.forecast__table-wind td img"
-    wind = wind.map{|td| td['alt']}
+    wind = wind.map{|td| blankify td['alt']}
     # puts "Wind: #{wind.size} - #{wind}"
 
     snow = page.search "tr.forecast__table-snow td"
@@ -41,6 +41,11 @@ module MountainForecast
     temp = temp.map{|p| {temp: p} }
     freezing = freezing.map{|f| {freezing: f} }
 
+    # return array of {:date=>"Thu_10", :time=>"AM", :wind=>"15 SW", :snow=>"", :temp=>"-22", :freezing=>"5000"}
     date.zip(time, wind, snow, temp, freezing).map{|d| d.reduce({}) {|h, e| h.merge e}}
+  end
+
+  def self.blankify(s)
+    s.delete " _\r\n"
   end
 end

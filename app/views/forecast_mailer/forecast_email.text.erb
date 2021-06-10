@@ -1,0 +1,4 @@
+<%= "8000m: " -%>
+<% @data.take(3).each do |d| %>
+<%= "#{d[:date]} #{d[:time]} #{d[:wind]} #{d[:snow]} #{d[:temp]} #{d[:freezing]} " -%>
+<% end %>
