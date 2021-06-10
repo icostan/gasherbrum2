@@ -45,8 +45,10 @@ Rails.application.configure do
     domain:               'costan.ro',
     user_name:            ENV['EMAIL'],
     password:             ENV['PASS'],
-    authentication:       'plain'
+    authentication:       'plain',
+    enable_stattls_auto:  true
     }
+  # config.action_mailer.delivery_method = :sendmail
 
 
   # Print deprecation notices to the Rails logger.
