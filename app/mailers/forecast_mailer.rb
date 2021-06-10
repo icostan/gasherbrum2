@@ -1,8 +1,18 @@
 class ForecastMailer < ApplicationMailer
   def forecast_email
     @data = params[:data]
-    email = params[:email]
-    format = "text/#{params[:format] || 'html'}"
-    mail(to: email, subject: 'Gasherbrum2 forecast')
+    notification = params[:notification]
+    options = { to: notification.email, subject: notification.subject }
+    if notification.format.blank?
+      mail(options) do |format|
+        format.html
+        format.text
+      end
+    else
+      mail(options) do |format|
+        m = format.method notification.format
+        m.call
+      end
+    end
   end
 end
