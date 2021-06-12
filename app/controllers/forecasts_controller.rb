@@ -3,7 +3,7 @@ class ForecastsController < ApplicationController
 
   # GET /forecasts or /forecasts.json
   def index
-    @forecasts = Forecast.all
+    @forecasts = Forecast.order(created_at: :desc).all
   end
 
   # GET /forecasts/1 or /forecasts/1.json

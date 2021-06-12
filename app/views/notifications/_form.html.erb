@@ -24,7 +24,7 @@
   <div class="field">
     <%= form.label :format %>
     <!-- <%= form.text_field :format %> -->
-    <%= form.select :format, options_for_select([['HTML', :html], ['TEXT', :text]]) %>
+    <%= form.select :format, options_for_select(['html', 'text'], selected: form.object.format ) %>
   </div>
 
   <!-- <div class="field"> -->
