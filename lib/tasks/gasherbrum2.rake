@@ -20,4 +20,15 @@ namespace :gasherbrum2 do
       ForecastMailer.with(data: forecast.data, notification: n).forecast_email.deliver_now
     end
   end
+
+  desc 'FB Graph API'
+  task :graphapi => :environment do
+    puts 'Facebook Graph API...'
+    require 'koala'
+
+    graph = Koala::Facebook::API.new ENV['ACCESS_TOKEN']
+    # result = graph.get_object("me")
+    result = graph.put_wall_post("hey, i'm learning graph api...")
+    puts result
+  end
 end
