@@ -27,6 +27,11 @@
     <%= form.select :format, options_for_select(['html', 'text'], selected: form.object.format ) %>
   </div>
 
+  <div class="field">
+    <%= form.label :disabled %>
+    <%= form.check_box :disabled %>
+  </div>
+
   <!-- <div class="field"> -->
   <!--   <%= form.label :send_at %> -->
   <!--   <%= form.datetime_select :send_at %> -->

@@ -14,9 +14,9 @@ namespace :gasherbrum2 do
     puts 'Send forecast notification...'
     require 'forecast_mailer'
     forecast = Forecast.last
-    puts "Forecast data (#{forecast.data.size}): #{forecast.data}"
-    Notification.all.each do |n|
-      puts "==> Notify #{n.email}..."
+    puts "=+> Forecast data: (#{forecast.data.size}): #{forecast.data}"
+    Notification.all.active.each do |n|
+      puts "==> Sending #{n.format} notification to #{n.email} ..."
       ForecastMailer.with(data: forecast.data, notification: n).forecast_email.deliver_now
     end
   end
