@@ -2,6 +2,7 @@ class ForecastMailer < ApplicationMailer
   def forecast_email
     @data = params[:data]
     notification = params[:notification]
+
     options = { to: notification.email, subject: notification.subject }
     if notification.format.blank?
       mail(options) do |format|

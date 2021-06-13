@@ -1,4 +1,9 @@
-<%= "8035: " -%>
-<% @data.take(9).each do |d| %>
-<%= "#{d[:date]} #{d[:wind]} #{d[:snow]} #{d[:temp]} #{d[:freezing]} " -%>
+<%
+  def datify(d)
+    d.downcase.gsub /[a-z]/, ''
+  end
+%>
+<%= "8035 " -%>
+<% @data.slice(1, 9).each do |d| %>
+<%= "#{datify d[:date]}#{d[:wind]}#{d[:snow]}#{d[:temp]}#{d[:freezing]} " -%>
 <% end %>
