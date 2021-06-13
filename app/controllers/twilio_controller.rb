@@ -12,7 +12,7 @@ class TwilioController < ApplicationController
 
     # render the response
     response = Twilio::TwiML::MessagingResponse.new do |r|
-      r.message(body: 'Ahoy! Thanks so much for your message.')
+      # r.message(body: 'Ahoy! Thanks so much for your message.')
     end
     render_twiml response
   end

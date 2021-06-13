@@ -5,5 +5,6 @@ class TwilioControllerTest < ActionDispatch::IntegrationTest
       post twilio_sms_path params
     end
     assert_response :success
+    assert_match "<Response/>", @response.body
   end
 end

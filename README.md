@@ -69,7 +69,16 @@ Sends out all email notifications with latest forecast data.
 ```
 
 ### Twilio
-- account g2@costan.ro
+- g2@costan.ro
+
+### Facebook
+- https://developers.facebook.com/docs/pages/access-tokens
+- https://developers.facebook.com/docs/graph-api/reference/page/feed#publish
+- https://developers.facebook.com/tools/explorer/?method=GET&path=101683485488290%2Ffeed&version=v11.0
+- https://www.freeprivacypolicy.com/
+
+### Google
+- g2@costan.ro
 
 ##  Run tests
 ```sh
