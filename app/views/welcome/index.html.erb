@@ -2,14 +2,24 @@
 <p>
   The time is now: <%= Time.now %>
 </p>
+<hr/>
 <p>
   <a href="<%= notifications_path %>"> Notifications </a>
 </p>
 <p>
   <a href="<%= forecasts_path %>"> Forecasts </a>
 </p>
+<p>
+  <a href="<%= messages_path %>"> Messages </a>
+</p>
+<hr/>
+<p>
+  <a href="<%= privacy_path %>"> Privacy Policy </a>
+</p>
+<hr/>
 <% if Rails.env.development? %>
 <p>
   <a href="/rails/mailers"> Email previews </a>
 </p>
 <% end %>
+<hr/>

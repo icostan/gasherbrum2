@@ -61,11 +61,15 @@ It fetches forecast data from configured forecast provider.
 ```sh
 % rails gasherbrum2:forecast
 ```
+
 ### notification job
 Sends out all email notifications with latest forecast data.
 ```sh
 % rails gasherbrum2:notifications
 ```
+
+### Twilio
+- account g2@costan.ro
 
 ##  Run tests
 ```sh

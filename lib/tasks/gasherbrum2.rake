@@ -21,14 +21,13 @@ namespace :gasherbrum2 do
     end
   end
 
-  desc 'FB Graph API'
+  desc 'Using Graph API'
   task :graphapi => :environment do
     puts 'Facebook Graph API...'
-    require 'koala'
+    require 'facebook'
 
-    graph = Koala::Facebook::API.new ENV['ACCESS_TOKEN']
-    # result = graph.get_object("me")
-    result = graph.put_wall_post("hey, i'm learning graph api...")
+    facebook = Facebook.new
+    result = facebook.profile
     puts result
   end
 end
