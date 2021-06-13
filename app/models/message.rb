@@ -1,10 +1,10 @@
 require 'facebook'
 
 class Message < ApplicationRecord
-  after_commit :publish_to_facebook, on: :create, if: -> { Rails.env.development? }
+  after_commit :publish_to_facebook, on: :create, if: -> { Rails.env.production? }
 
   def publish_to_facebook
-    raise "the fuck" unless Rails.env.development?
+    raise "the fuck" unless Rails.env.production?
 
     facebook = Facebook.new
     result = facebook.post message
