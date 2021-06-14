@@ -1,8 +1,11 @@
 Provider: Mountain Forecast
 <hr/>
+<p>
+  Elevation: <%= @forecast.elevation %>m
+</p>
 <ul>
-    <% @data.each do |d| %>
-    <li> <%= d.to_s %> </li>
-    <% end %>
+  <% @forecast.data.each do |d| %>
+  <li> <%= d.to_s %> </li>
+  <% end %>
 </ul>
 <hr/>

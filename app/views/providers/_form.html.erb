@@ -1,0 +1,37 @@
+<%= form_with(model: provider) do |form| %>
+  <% if provider.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(provider.errors.count, "error") %> prohibited this provider from being saved:</h2>
+
+      <ul>
+        <% provider.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, disabled: true%>
+  </div>
+
+  <div class="field">
+    <%= form.label :endpoint %>
+    <%= form.text_field :endpoint, disabled: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :elevation %>
+    <%= form.select :elevation, options_for_select(['5500', '6500', '7500', '8035'], selected: form.object.elevation ) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :disabled %>
+    <%= form.check_box :disabled, disabled: true%>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

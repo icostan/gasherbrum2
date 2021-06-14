@@ -4,9 +4,10 @@ namespace :gasherbrum2 do
   desc "Forecast..."
   task :forecast => :environment do
     puts 'Forecast from mountain-forecast.com...'
-    data = MountainForecast.crawl
+    provider = Provider.first
+    data = MountainForecast.crawl provider
     puts "Saving ... #{data.size}"
-    Forecast.create! data: data
+    Forecast.create! data: data, elevation: provider.elevation
   end
 
   desc "Notifications..."
@@ -17,7 +18,7 @@ namespace :gasherbrum2 do
     puts "=+> Forecast data: (#{forecast.data.size}): #{forecast.data}"
     Notification.all.active.each do |n|
       puts "==> Sending #{n.format} notification to #{n.email} ..."
-      ForecastMailer.with(data: forecast.data, notification: n).forecast_email.deliver_now
+      ForecastMailer.with(forecast: forecast, notification: n).forecast_email.deliver_now
     end
   end
 

@@ -5,6 +5,6 @@ class ForecastMailerPreview < ActionMailer::Preview
   def forecast
     notification = Notification.new
     forecast = Forecast.last
-    ForecastMailer.with(data: forecast.data, notification: notification).forecast_email
+    ForecastMailer.with(forecast: forecast, notification: notification).forecast_email
   end
 end

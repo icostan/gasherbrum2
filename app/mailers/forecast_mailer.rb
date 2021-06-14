@@ -1,6 +1,6 @@
 class ForecastMailer < ApplicationMailer
   def forecast_email
-    @data = params[:data]
+    @forecast = params[:forecast]
     notification = params[:notification]
 
     options = { to: notification.email, subject: notification.subject }

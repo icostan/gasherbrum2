@@ -3,7 +3,7 @@
     d.downcase.gsub /[a-z]/, ''
   end
 %>
-<%= "8035 " -%>
-<% @data.slice(1, 9).each do |d| %>
+<%= "#{@forecast.elevation} " -%>
+<% @forecast.data.slice(1, 9).each do |d| %>
 <%= "#{datify d[:date]}#{d[:wind]}#{d[:snow]}#{d[:temp]}#{d[:freezing]} " -%>
 <% end %>

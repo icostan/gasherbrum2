@@ -1,5 +1,5 @@
 module MountainForecast
-  def self.crawl
+  def self.crawl(provider)
     require 'mechanize'
 
     agent = Mechanize.new do |agent|
@@ -7,7 +7,7 @@ module MountainForecast
       agent.log = Logger.new "mech.log"
     end
 
-    url = 'https://www.mountain-forecast.com/peaks/Gasherbrum-II/forecasts/8035'
+    url = provider.endpoint + provider.elevation
     page = agent.get url
 
     date = page.search "tr.forecast__table-days td"
