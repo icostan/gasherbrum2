@@ -4,6 +4,6 @@
   end
 %>
 <%= "#{@forecast.elevation} " -%>
-<% @forecast.data.slice(1, 9).each do |d| %>
-<%= "#{datify d[:date]}#{d[:wind]}#{d[:snow]}#{d[:temp]}#{d[:freezing]} " -%>
+<% @forecast.data.slice(1, 15).each do |d| %>
+<%= "#{datify d[:date]}#{d[:wind]}#{d[:snow]}#{d[:temp]} " -%>
 <% end %>
